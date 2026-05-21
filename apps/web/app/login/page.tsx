@@ -162,30 +162,30 @@ function LoginContent() {
       </div>
 
       {/* Login Card */}
-      <div className="w-full max-w-[440px] bg-white rounded-[10px] shadow-2xl relative z-10 px-8 py-10">
+      <div className="w-full max-w-[440px] bg-white/[0.07] backdrop-blur-xl border border-white/[0.12] rounded-2xl shadow-2xl relative z-10 px-8 py-10">
         
         {/* UMS Logo */}
         <div className="flex justify-center mb-6">
           <img 
-            src="https://upload.wikimedia.org/wikipedia/commons/8/8c/Logo_UMS_Surakarta.png" 
+            src="/ums-logo.png" 
             alt="Universitas Muhammadiyah Surakarta" 
-            className="h-20 object-contain"
+            className="h-20 w-auto object-contain drop-shadow-[0_2px_10px_rgba(255,255,255,0.15)]"
           />
         </div>
 
         {needsRegistration ? (
           <>
-            <h2 className="text-[20px] text-center font-medium text-gray-900 mb-2">
+            <h2 className="text-[20px] text-center font-bold text-white mb-2">
               Verifikasi Data Alumni
             </h2>
-            <p className="text-sm text-gray-500 text-center mb-6">
+            <p className="text-sm text-blue-200/60 text-center mb-6">
               Hubungkan akun Google ini dengan memasukkan data kemahasiswaan Anda.
             </p>
 
             {/* Error Alerts */}
             {googleError && (
-              <div className="mb-6 p-3 bg-red-50 border border-red-200 text-red-600 text-sm rounded-md flex items-start gap-2">
-                <svg className="w-5 h-5 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <div className="mb-6 p-3.5 bg-red-500/15 border border-red-400/30 rounded-xl text-red-300 text-sm flex items-start gap-2.5">
+                <svg className="w-5 h-5 shrink-0 mt-0.5 text-red-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z" />
                 </svg>
                 <span>{googleError}</span>
@@ -194,23 +194,21 @@ function LoginContent() {
 
             <form onSubmit={handleLinkSubmit} className="space-y-4 mb-6">
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">NIM</label>
+                <label className="block text-sm font-medium text-blue-100/80 mb-1.5">NIM</label>
                 <input
                   type="text"
                   value={linkNim}
                   onChange={(e) => setLinkNim(e.target.value)}
                   placeholder="Contoh: A710180052"
-                  className="w-full px-4 py-[10px] text-[15px] border border-gray-300 rounded-[5px] text-gray-800 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-colors uppercase"
+                  className="w-full px-4 py-3 bg-white/[0.06] border border-white/[0.12] rounded-xl text-white placeholder:text-blue-200/30 focus:outline-none focus:ring-2 focus:ring-blue-400/40 focus:border-blue-400/40 transition text-sm uppercase"
                   required
                 />
               </div>
-              
-
 
               <button
                 type="submit"
                 disabled={linkLoading || !linkNim}
-                className="w-full bg-[#2f6ce6] hover:bg-[#2558c4] text-white py-[10px] rounded-[5px] text-[15px] font-medium transition-colors mt-4 disabled:opacity-70 disabled:cursor-not-allowed flex justify-center items-center gap-2"
+                className="w-full bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white py-3 rounded-xl text-sm font-semibold transition-all duration-200 mt-6 disabled:opacity-50 disabled:cursor-not-allowed flex justify-center items-center gap-2 shadow-lg shadow-blue-500/25"
               >
                 {linkLoading ? (
                   <svg className="w-5 h-5 animate-spin" fill="none" viewBox="0 0 24 24">
@@ -228,7 +226,7 @@ function LoginContent() {
                   setNeedsRegistration(false);
                   setGoogleError(null);
                 }}
-                className="w-full text-center text-sm text-gray-500 hover:text-gray-800 mt-2"
+                className="w-full text-center text-sm text-blue-200/50 hover:text-white transition mt-4"
               >
                 Kembali ke Login
               </button>
@@ -237,14 +235,17 @@ function LoginContent() {
         ) : (
           <>
             {/* Title */}
-            <h2 className="text-[22px] text-center font-medium text-gray-900 mb-8">
+            <h2 className="text-[22px] text-center font-bold text-white tracking-tight mb-1">
               Sign in to your account
             </h2>
+            <p className="text-sm text-blue-200/60 text-center mb-8">
+              Tracer Study PPG dan Studi Lanjut — PTI FKIP UMS
+            </p>
 
             {/* Success Alert */}
             {success && (
-              <div className="mb-6 p-3 bg-green-50 border border-green-200 text-green-700 text-sm rounded-md flex items-center gap-2">
-                <svg className="w-5 h-5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <div className="mb-6 p-3.5 bg-green-500/15 border border-green-400/30 rounded-xl text-green-300 text-sm flex items-start gap-2.5">
+                <svg className="w-5 h-5 shrink-0 mt-0.5 text-green-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
                 <span>{success}</span>
@@ -253,8 +254,8 @@ function LoginContent() {
 
             {/* Error Alerts */}
             {(manualError || googleError) && (
-              <div className="mb-6 p-3 bg-red-50 border border-red-200 text-red-600 text-sm rounded-md flex items-start gap-2">
-                <svg className="w-5 h-5 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <div className="mb-6 p-3.5 bg-red-500/15 border border-red-400/30 rounded-xl text-red-300 text-sm flex items-start gap-2.5">
+                <svg className="w-5 h-5 shrink-0 mt-0.5 text-red-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z" />
                 </svg>
                 <span>{manualError || googleError}</span>
@@ -268,8 +269,8 @@ function LoginContent() {
                   type="text"
                   value={username}
                   onChange={(e) => setUsername(e.target.value)}
-                  placeholder="UniID/NIM (tanpa @ums.ac.id, @student.ums.ac.id)"
-                  className="w-full px-4 py-[10px] text-[15px] border border-gray-300 rounded-[5px] text-gray-800 placeholder-gray-400 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-colors"
+                  placeholder="UniID/NIM (tanpa suffix email)"
+                  className="w-full px-4 py-3 bg-white/[0.06] border border-white/[0.12] rounded-xl text-white placeholder:text-blue-200/30 focus:outline-none focus:ring-2 focus:ring-blue-400/40 focus:border-blue-400/40 transition text-sm"
                   required
                 />
               </div>
@@ -280,13 +281,13 @@ function LoginContent() {
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   placeholder="Password"
-                  className="w-full px-4 py-[10px] text-[15px] border border-gray-300 rounded-[5px] text-gray-800 placeholder-gray-400 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-colors pr-10"
+                  className="w-full pl-4 pr-10 py-3 bg-white/[0.06] border border-white/[0.12] rounded-xl text-white placeholder:text-blue-200/30 focus:outline-none focus:ring-2 focus:ring-blue-400/40 focus:border-blue-400/40 transition text-sm"
                   required
                 />
                 <button
                   type="button"
                   onClick={() => setShowPassword(!showPassword)}
-                  className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600"
+                  className="absolute right-3.5 top-1/2 -translate-y-1/2 text-blue-300/50 hover:text-white transition"
                   tabIndex={-1}
                 >
                   {showPassword ? (
@@ -300,7 +301,7 @@ function LoginContent() {
               <button
                 type="submit"
                 disabled={manualLoading || !username || !password}
-                className="w-full bg-[#2f6ce6] hover:bg-[#2558c4] text-white py-[10px] rounded-[5px] text-[15px] font-medium transition-colors mt-2 disabled:opacity-70 disabled:cursor-not-allowed flex justify-center items-center gap-2"
+                className="w-full py-3 bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white text-sm font-semibold rounded-xl transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed shadow-lg shadow-blue-500/25 hover:shadow-blue-500/40 flex items-center justify-center gap-2"
               >
                 {manualLoading ? (
                   <svg className="w-5 h-5 animate-spin" fill="none" viewBox="0 0 24 24">
@@ -314,24 +315,21 @@ function LoginContent() {
             </form>
 
             {/* Divider */}
-            <div className="relative my-6">
-              <div className="absolute inset-0 flex items-center">
-                <div className="w-full border-t border-gray-200"></div>
-              </div>
-              <div className="relative flex justify-center text-sm">
-                <span className="px-3 bg-white text-gray-500 font-normal">Or sign in with</span>
-              </div>
+            <div className="flex items-center my-8 text-xs uppercase tracking-wider text-blue-200/40">
+              <div className="flex-1 border-t border-white/[0.08]"></div>
+              <span className="px-3 font-medium">Or sign in with</span>
+              <div className="flex-1 border-t border-white/[0.08]"></div>
             </div>
 
             {/* Google Sign-in */}
             <div className="flex justify-center">
               {googleLoading ? (
                 <div className="flex items-center justify-center py-2">
-                  <svg className="w-6 h-6 animate-spin text-[#2f6ce6]" fill="none" viewBox="0 0 24 24">
+                  <svg className="w-6 h-6 animate-spin text-blue-400" fill="none" viewBox="0 0 24 24">
                     <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
                     <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
                   </svg>
-                  <span className="ml-3 text-sm text-gray-600">Memverifikasi akun Google...</span>
+                  <span className="ml-3 text-sm text-blue-200">Memverifikasi akun Google...</span>
                 </div>
               ) : GOOGLE_CLIENT_ID ? (
                 <GoogleLogin
@@ -340,11 +338,11 @@ function LoginContent() {
                   text="signin_with"
                   shape="rectangular"
                   size="large"
-                  width="350"
-                  theme="outline"
+                  width="376"
+                  theme="filled_blue"
                 />
               ) : (
-                <div className="bg-amber-50 border border-amber-200 rounded px-4 py-3 text-sm text-amber-700 w-full text-center">
+                <div className="bg-amber-500/10 border border-amber-500/20 rounded-xl px-4 py-3 text-sm text-amber-300 w-full text-center">
                   Google Client ID belum dikonfigurasi.
                 </div>
               )}
