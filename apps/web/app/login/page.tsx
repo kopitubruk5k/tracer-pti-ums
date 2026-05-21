@@ -164,19 +164,12 @@ function LoginContent() {
       {/* Login Card */}
       <div className="w-full max-w-[440px] bg-white/[0.07] backdrop-blur-xl border border-white/[0.12] rounded-2xl shadow-2xl relative z-10 px-8 py-10">
         
-        {/* Logos */}
-        <div className="flex justify-center items-center gap-5 mb-8">
-          <img 
-            src={`${process.env.NEXT_PUBLIC_BASE_PATH || ""}/ums-logo.png`} 
-            alt="Universitas Muhammadiyah Surakarta" 
-            className="h-16 w-auto object-contain drop-shadow-[0_2px_8px_rgba(255,255,255,0.15)]"
-            suppressHydrationWarning
-          />
-          <div className="h-8 w-[1px] bg-white/20"></div>
+        {/* Logo */}
+        <div className="flex justify-center mb-8">
           <img 
             src={`${process.env.NEXT_PUBLIC_BASE_PATH || ""}/pti.webp`} 
             alt="PTI UMS" 
-            className="h-16 w-auto object-contain drop-shadow-[0_2px_8px_rgba(255,255,255,0.15)]"
+            className="h-20 w-auto object-contain drop-shadow-[0_2px_10px_rgba(255,255,255,0.15)]"
             suppressHydrationWarning
           />
         </div>
@@ -327,39 +320,7 @@ function LoginContent() {
               </button>
             </form>
 
-            {/* Divider */}
-            <div className="flex items-center my-8 text-xs uppercase tracking-wider text-blue-200/40">
-              <div className="flex-1 border-t border-white/[0.08]"></div>
-              <span className="px-3 font-medium">Or sign in with</span>
-              <div className="flex-1 border-t border-white/[0.08]"></div>
-            </div>
 
-            {/* Google Sign-in */}
-            <div className="flex justify-center">
-              {googleLoading ? (
-                <div className="flex items-center justify-center py-2">
-                  <svg className="w-6 h-6 animate-spin text-blue-400" fill="none" viewBox="0 0 24 24">
-                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
-                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
-                  </svg>
-                  <span className="ml-3 text-sm text-blue-200">Memverifikasi akun Google...</span>
-                </div>
-              ) : GOOGLE_CLIENT_ID ? (
-                <GoogleLogin
-                  onSuccess={handleGoogleSuccess}
-                  onError={handleGoogleError}
-                  text="signin_with"
-                  shape="rectangular"
-                  size="large"
-                  width="376"
-                  theme="filled_blue"
-                />
-              ) : (
-                <div className="bg-amber-500/10 border border-amber-500/20 rounded-xl px-4 py-3 text-sm text-amber-300 w-full text-center">
-                  Google Client ID belum dikonfigurasi.
-                </div>
-              )}
-            </div>
           </>
         )}
       </div>
