@@ -1,0 +1,3 @@
+# List of files to exclude from backend deployment
+.git\
+.gitignore
