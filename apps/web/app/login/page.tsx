@@ -164,12 +164,20 @@ function LoginContent() {
       {/* Login Card */}
       <div className="w-full max-w-[440px] bg-white/[0.07] backdrop-blur-xl border border-white/[0.12] rounded-2xl shadow-2xl relative z-10 px-8 py-10">
         
-        {/* UMS Logo */}
-        <div className="flex justify-center mb-6">
+        {/* Logos */}
+        <div className="flex justify-center items-center gap-5 mb-8">
           <img 
-            src="/ums-logo.png" 
+            src={`${process.env.NEXT_PUBLIC_BASE_PATH || ""}/ums-logo.png`} 
             alt="Universitas Muhammadiyah Surakarta" 
-            className="h-20 w-auto object-contain drop-shadow-[0_2px_10px_rgba(255,255,255,0.15)]"
+            className="h-16 w-auto object-contain drop-shadow-[0_2px_8px_rgba(255,255,255,0.15)]"
+            suppressHydrationWarning
+          />
+          <div className="h-8 w-[1px] bg-white/20"></div>
+          <img 
+            src={`${process.env.NEXT_PUBLIC_BASE_PATH || ""}/pti.webp`} 
+            alt="PTI UMS" 
+            className="h-16 w-auto object-contain drop-shadow-[0_2px_8px_rgba(255,255,255,0.15)]"
+            suppressHydrationWarning
           />
         </div>
 
