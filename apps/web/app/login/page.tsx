@@ -202,6 +202,7 @@ function LoginContent() {
                   placeholder="Contoh: A710180052"
                   className="w-full px-4 py-3 bg-white/[0.06] border border-white/[0.12] rounded-xl text-white placeholder:text-blue-200/30 focus:outline-none focus:ring-2 focus:ring-blue-400/40 focus:border-blue-400/40 transition text-sm uppercase"
                   required
+                  suppressHydrationWarning
                 />
               </div>
 
@@ -209,6 +210,7 @@ function LoginContent() {
                 type="submit"
                 disabled={linkLoading || !linkNim}
                 className="w-full bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white py-3 rounded-xl text-sm font-semibold transition-all duration-200 mt-6 disabled:opacity-50 disabled:cursor-not-allowed flex justify-center items-center gap-2 shadow-lg shadow-blue-500/25"
+                suppressHydrationWarning
               >
                 {linkLoading ? (
                   <svg className="w-5 h-5 animate-spin" fill="none" viewBox="0 0 24 24">
@@ -272,6 +274,7 @@ function LoginContent() {
                   placeholder="UniID/NIM (tanpa suffix email)"
                   className="w-full px-4 py-3 bg-white/[0.06] border border-white/[0.12] rounded-xl text-white placeholder:text-blue-200/30 focus:outline-none focus:ring-2 focus:ring-blue-400/40 focus:border-blue-400/40 transition text-sm"
                   required
+                  suppressHydrationWarning
                 />
               </div>
               
@@ -283,6 +286,7 @@ function LoginContent() {
                   placeholder="Password"
                   className="w-full pl-4 pr-10 py-3 bg-white/[0.06] border border-white/[0.12] rounded-xl text-white placeholder:text-blue-200/30 focus:outline-none focus:ring-2 focus:ring-blue-400/40 focus:border-blue-400/40 transition text-sm"
                   required
+                  suppressHydrationWarning
                 />
                 <button
                   type="button"
@@ -302,6 +306,7 @@ function LoginContent() {
                 type="submit"
                 disabled={manualLoading || !username || !password}
                 className="w-full py-3 bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white text-sm font-semibold rounded-xl transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed shadow-lg shadow-blue-500/25 hover:shadow-blue-500/40 flex items-center justify-center gap-2"
+                suppressHydrationWarning
               >
                 {manualLoading ? (
                   <svg className="w-5 h-5 animate-spin" fill="none" viewBox="0 0 24 24">
